@@ -1,23 +1,40 @@
-sudo rm -f /dev/fibonacci
-sudo rmmod fibonacci
-make
-sudo insmod fibonacci.ko
-sudo mknod /dev/fibonacci c 249 0
-sudo chmod a+r+w /dev/fibonacci
-
 echo "\n"
 echo "10" > /dev/fibonacci
 cat /dev/fibonacci
+
+result=$(cat /dev/fibonacci)
+if [ "$result" = "55" ] 
+then 
+	echo ":OK"
+else 
+	echo ":NO"
+fi
 
 echo "\n"
 echo "11" > /dev/fibonacci
 cat /dev/fibonacci
 
+result=$(cat /dev/fibonacci)
+if [ "$result" = "89" ] 
+then 
+	echo ":OK"
+else
+	echo ":NO"
+fi
+
 echo "\n"
 echo "12" > /dev/fibonacci
 cat /dev/fibonacci
-echo "\n"
 
-sudo rm -f /dev/fibonacci
-sudo rmmod fibonacci
-make clean
+result=$(cat /dev/fibonacci)
+if [ "$result" = "144" ] 
+then 
+	echo ":OK"
+else 
+	echo ":NO"
+echo "\n"
+fi
+
+#sudo rm -f /dev/fibonacci
+#sudo rmmod fibonacci
+#make clean
